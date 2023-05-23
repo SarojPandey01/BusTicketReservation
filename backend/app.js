@@ -56,10 +56,10 @@ function handleLogin() {
       const { email, password } = req.body;
       console.warn(email, password);
 
-      let sql = `SELECT password,userid,Name,Email FROM users WHERE email=?`;
+      let sql = `SELECT password,userid,Name,Email,phone FROM users WHERE email=?`;
       db.all(sql, [email], (err, row) => {
         if (row[0]) {
-          let { Password: hash, userid, Name, Email } = row[0];
+          let { Password: hash, userid, Name, Email,phone } = row[0];
           console.log(hash, userid, Name, Email);
           let isAuthorized = bcrypt.compareSync(password, hash);
           console.log(isAuthorized);
@@ -105,12 +105,12 @@ function handleBookTicket() {
   // let sql =
   //   "CREATE TABLE bookings (userid INTEGER PRIMARY KEY , name TEXT ,source TEXT, destination TEXT, date TEXT,seat TEXT)";
 }
-function getUserDataFromUserId(uid) {
+function getUserDataFromUserId(uid,res) {
   let sql = `SELECT Name,Email,phone FROM users WHERE userid=?`;
   db.all(sql, [uid], (err, row) => {
     if (row[0]) {
       let { userid, Name, Email, phone } = row[0];
-      console.log(hash, userid, Name, Email);
+      console.log( userid, Name, Email);
 
       res.json({ authorized: true, Name, Email, userid, phone });
       return {
@@ -124,10 +124,10 @@ function getUserDataFromUserId(uid) {
     }
   });
 }
-console.log(getUserDataFromUserId(69));
+
 //todo
 // handleBookTicket();
-// handleLogin();
+handleLogin();
 
 // handleSignup();
 app.listen(3001);
