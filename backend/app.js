@@ -53,10 +53,10 @@ function handleLogin() {
       const { email, password } = req.body;
       console.warn(email, password);
 
-      let sql = `SELECT password,userid,Name,Email FROM users WHERE email=?`;
+      let sql = `SELECT password,userid,Name,Email,phone FROM users WHERE email=?`;
       db.all(sql, [email], (err, row) => {
         if (row[0]) {
-          let { Password: hash, userid, Name, Email } = row[0];
+          let { Password: hash, userid, Name, Email, phone } = row[0];
           console.log(hash, userid, Name, Email);
 
           isAuthorized = bcrypt.compareSync(password, hash);
@@ -104,13 +104,15 @@ function handleBookTicket() {
   // let sql =
   //   "CREATE TABLE bookings (userid INTEGER PRIMARY KEY , name TEXT ,source TEXT, destination TEXT, date TEXT,seat TEXT)";
 }
-async function getUserDataFromUserId(uid, res) {
-  let sql = `SELECT Name,Email,phone,userid FROM users WHERE userid=?`;
-  let resp = db.all(sql, [uid], (err, row) => {
+function getUserDataFromUserId(uid, res) {
+  let sql = `SELECT Name,Email,phone FROM users WHERE userid=?`;
+  db.all(sql, [uid], (err, row) => {
     if (row[0]) {
       let { userid, Name, Email, phone } = row[0];
-      console.log(userid, Name, Email, phone);
-      resp = {
+      console.log(userid, Name, Email);
+
+      res.json({ authorized: true, Name, Email, userid, phone });
+      return {
         userid,
         Name,
         Email,
@@ -126,10 +128,10 @@ async function getUserDataFromUserId(uid, res) {
     }
   });
 }
-getUserDataFromUserId(69);
+
 //todo
 // handleBookTicket();
-// handleLogin();
+handleLogin();
 
 // handleSignup();
 app.listen(3001);
