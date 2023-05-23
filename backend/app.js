@@ -20,11 +20,11 @@ function handleSignup() {
   app.post("/signup", (req, res) => {
     try {
       const { id, name, email, password, phone } = req.body;
+
       var salt = bcrypt.genSaltSync(10);
       var hashedPassword = bcrypt.hashSync(password, salt);
       let sql =
         "INSERT INTO users(userid,Name, Email, Password,phone) VALUES (?,?,?,?,?)";
-
       db.run(sql, [id, name, email, hashedPassword, phone], (err) => {
         if (err) {
           res.json({
@@ -32,10 +32,11 @@ function handleSignup() {
             message: err.message,
           });
           return console.log(err.message);
+        } else {
+          getUserDataFromUserId(id, res);
+          console.log(`A row has been inserted with rowid ${id}`);
         }
         // get the last insert id
-        console.log(`A row has been inserted with rowid ${id}`);
-        getUserDataFromUserId(id, res);
       });
     } catch (e) {
       res.json({
@@ -88,7 +89,7 @@ function handleBookTicket() {
       let sql =
         "INSERT INTO bookings (userid,name,source,destination, date,seat) VALUES (?,?,?,?,?,?)";
       db.run(sql, [userid, name, source, destination, date, seat], (e) => {
-        if (e == undefined) {
+        if (e != undefined) {
           res.json({ success: false, message: e });
 
           return console.log(e);
@@ -107,31 +108,34 @@ function handleBookTicket() {
 function getUserDataFromUserId(uid, res) {
   let sql = `SELECT Name,Email,phone FROM users WHERE userid=?`;
   db.all(sql, [uid], (err, row) => {
-    if (row[0]) {
-      let { userid, Name, Email, phone } = row[0];
-      console.log(userid, Name, Email);
+    if (!err) {
+      if (row[0]) {
+        let { Name, Email, phone } = row[0];
+        console.log(uid, Name, Email);
 
-      res.json({ authorized: true, Name, Email, userid, phone });
-      return {
-        userid,
-        Name,
-        Email,
-        phone,
-      };
+        let resp = {
+          uid,
+          Name,
+          Email,
+          phone,
+        };
 
-      res.json({
-        ...resp,
-        status: "success",
-        message: `A row has been inserted with rowid ${id}`,
-        authorized: true,
-      });
+        res.json({
+          ...resp,
+          status: "success",
+
+          authorized: true,
+        });
+      }
+    } else {
+      throw new Error(err.message);
     }
   });
 }
 
 //todo
-// handleBookTicket();
 handleLogin();
+handleBookTicket();
 
-// handleSignup();
-app.listen(3001);
+handleSignup();
+app.listen(3000);
