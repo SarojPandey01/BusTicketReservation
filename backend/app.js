@@ -16,15 +16,16 @@ app.use(bodyParser.json());
 function handleSignup() {
   // let sql =
   //   "CREATE TABLE users (userid INTEGER PRIMARY KEY,Name TEXT, Email TEXT UNIQUE, Password TEXT NOT NULL)";
+
   app.post("/signup", (req, res) => {
     try {
-      const { id, name, email, password } = req.body;
+      const { id, name, email, password, phone } = req.body;
       var salt = bcrypt.genSaltSync(10);
       var hashedPassword = bcrypt.hashSync(password, salt);
       let sql =
-        "INSERT INTO users(userid,Name, Email, Password) VALUES (?,?,?,?)";
+        "INSERT INTO users(userid,Name, Email, Password,phone) VALUES (?,?,?,?,?)";
 
-      db.run(sql, [id, name, email, hashedPassword], (err) => {
+      db.run(sql, [id, name, email, hashedPassword, phone], (err) => {
         if (err) {
           res.json({
             status: "failure",
@@ -63,7 +64,7 @@ function handleLogin() {
           let isAuthorized = bcrypt.compareSync(password, hash);
           console.log(isAuthorized);
           if (isAuthorized) {
-            res.json({ authorized: true, Name, Email, userid });
+            res.json({ authorized: true, Name, Email, userid, phone });
           } else {
             res.json({ authorized: false });
           }
@@ -80,7 +81,53 @@ function handleLogin() {
     }
   });
 }
-handleLogin();
 
-handleSignup();
+function handleBookTicket() {
+  app.post("/book", (req, res) => {
+    try {
+      const { userid, name, source, destination, date, seat } = req.body;
+      let sql =
+        "INSERT INTO bookings (userid,name,source,destination, date,seat) VALUES (?,?,?,?,?,?)";
+      db.run(sql, [userid, name, source, destination, date, seat], (e) => {
+        if (e == undefined) {
+          res.json({ success: false, message: e });
+
+          return console.log(e);
+        } else
+          res.json({ success: true, userid, name, source, destination, seat });
+      });
+    } catch (e) {
+      if (e) throw new Error(e);
+      res.json({ success: false, message: "Some Error occured" });
+    }
+  });
+
+  // let sql =
+  //   "CREATE TABLE bookings (userid INTEGER PRIMARY KEY , name TEXT ,source TEXT, destination TEXT, date TEXT,seat TEXT)";
+}
+function getUserDataFromUserId(uid) {
+  let sql = `SELECT Name,Email,phone FROM users WHERE userid=?`;
+  db.all(sql, [uid], (err, row) => {
+    if (row[0]) {
+      let { userid, Name, Email, phone } = row[0];
+      console.log(hash, userid, Name, Email);
+
+      res.json({ authorized: true, Name, Email, userid, phone });
+      return {
+        userid,
+        Name,
+        Email,
+        phone,
+      };
+    } else {
+      res.json({ authorized: false, message: "No Such User" });
+    }
+  });
+}
+console.log(getUserDataFromUserId(69));
+//todo
+// handleBookTicket();
+// handleLogin();
+
+// handleSignup();
 app.listen(3001);
