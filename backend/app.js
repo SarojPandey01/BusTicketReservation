@@ -35,10 +35,7 @@ function handleSignup() {
         }
         // get the last insert id
         console.log(`A row has been inserted with rowid ${id}`);
-        res.json({
-          status: "success",
-          message: `A row has been inserted with rowid ${id}`,
-        });
+        getUserDataFromUserId(id, res);
       });
     } catch (e) {
       res.json({
@@ -61,7 +58,9 @@ function handleLogin() {
         if (row[0]) {
           let { Password: hash, userid, Name, Email } = row[0];
           console.log(hash, userid, Name, Email);
-          let isAuthorized = bcrypt.compareSync(password, hash);
+
+          isAuthorized = bcrypt.compareSync(password, hash);
+
           console.log(isAuthorized);
           if (isAuthorized) {
             res.json({ authorized: true, Name, Email, userid, phone });
@@ -105,26 +104,29 @@ function handleBookTicket() {
   // let sql =
   //   "CREATE TABLE bookings (userid INTEGER PRIMARY KEY , name TEXT ,source TEXT, destination TEXT, date TEXT,seat TEXT)";
 }
-function getUserDataFromUserId(uid) {
-  let sql = `SELECT Name,Email,phone FROM users WHERE userid=?`;
-  db.all(sql, [uid], (err, row) => {
+async function getUserDataFromUserId(uid, res) {
+  let sql = `SELECT Name,Email,phone,userid FROM users WHERE userid=?`;
+  let resp = db.all(sql, [uid], (err, row) => {
     if (row[0]) {
       let { userid, Name, Email, phone } = row[0];
-      console.log(hash, userid, Name, Email);
-
-      res.json({ authorized: true, Name, Email, userid, phone });
-      return {
+      console.log(userid, Name, Email, phone);
+      resp = {
         userid,
         Name,
         Email,
         phone,
       };
-    } else {
-      res.json({ authorized: false, message: "No Such User" });
+
+      res.json({
+        ...resp,
+        status: "success",
+        message: `A row has been inserted with rowid ${id}`,
+        authorized: true,
+      });
     }
   });
 }
-console.log(getUserDataFromUserId(69));
+getUserDataFromUserId(69);
 //todo
 // handleBookTicket();
 // handleLogin();
