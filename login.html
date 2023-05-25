@@ -154,39 +154,44 @@
             />
             <h1 class="font-semibold text-gray-600">Tailwind CSS</h1>
           </div>
-          <div
-            class="flex flex-col justify-center items-center mt-10 md:mt-14 space-y-6 md:space-y-8"
-          >
-            <div class="">
-              <input
-                type="text"
-                placeholder="User Name"
-                class="bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]"
-              />
-            </div>
-            <div class="">
-              <input
-                type="password"
-                placeholder="Password"
-                class="bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]"
-              />
-            </div>
-            <div class="flex space-x-2 -ml-28 md:-ml-40 lg:-ml-52">
-              <input class="" type="checkbox" id="checkbox" name="checkbox" />
-              <h3
-                class="text-sm font-semibold text-gray-400 -mt-1 cursor-pointer"
-              >
-                Remember Me
-              </h3>
-            </div>
-          </div>
-          <div class="text-center mt-7">
-            <button
-              class="uppercase px-24 md:px-[118px] lg:px-[140px] py-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 font-medium"
+          <!--  -->
+          <form action="#" id="form">
+            <div
+              class="flex flex-col justify-center items-center mt-10 md:mt-14 space-y-6 md:space-y-8"
             >
-              login
-            </button>
-          </div>
+              <div class="">
+                <input
+                  type="email"
+                  placeholder="User email" id="name"
+                  class="bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]"
+                />
+              </div>
+              <div class="">
+                <input
+                  type="password"
+                  placeholder="Password" id="password"
+                  class="bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]"
+                />
+              </div>
+              <div class="flex space-x-2 -ml-28 md:-ml-40 lg:-ml-52">
+                <input class="" type="checkbox" id="checkbox" name="checkbox" />
+                <h3
+                  class="text-sm font-semibold text-gray-400 -mt-1 cursor-pointer"
+                >
+                  Remember Me
+                </h3>
+              </div>
+            </div>
+            <div class="text-center mt-7">
+              <button
+                id="submit" type="submit"
+                class="uppercase px-24 md:px-[118px] lg:px-[140px] py-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 font-medium"
+              >
+                login
+              </button>
+            </div>
+          </form>
+          <!-- ///// -->
           <div class="text-center my-6">
             <a
               href="#"
@@ -291,5 +296,7 @@
         </span>
       </div>
     </footer>
+    <script src="login.js"></script>
+    <script src="global.js"></script>
   </body>
 </html>
