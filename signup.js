@@ -4,9 +4,13 @@ let emailInput = document.getElementById("email");
 let phoneInput = document.getElementById("phoneno");
 let pass1Input = document.getElementById("password1");
 let pass2Input = document.getElementById("password2");
-// let API_URL = "https://kgnairbus.onrender.com";
-let API_URL = "http://localhost:3000";
+let API_URL = "https://kgnairbus.onrender.com";
+// let API_URL = "http://localhost:3000";
 
+let modalContainer = document.getElementById("modal-container");
+let modalButton = document.getElementById("modal-button");
+let modalTitle = document.getElementById("modal-title");
+let modalText = document.getElementById("modal-text");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -61,25 +65,45 @@ form.addEventListener("submit", async (e) => {
       ? "SIGNUP SUCCESS"
       : "SIGNUP FAILED";
     let userInfo = resjson;
-
+    modalContainer.classList.remove("hidden");
+    modalContainer.classList.add("block");
     resjson.authorized && localStorage.setItem("kgn", JSON.stringify(userInfo));
+    if (resjson.status === "success") {
+      modalTitle.innerHTML =
+        "Hello " +
+        resjson.Name +
+        "👋, <br/>" +
+        "Your Account has successfully been Created.";
+      modalText.innerText =
+        "     You can now login with credentials. Thank you for joining our community. We look forward to providing you with a great user experience!";
+      modalContainer.style.setProperty("--state-colour", "green");
+    } else {
+      modalTitle.innerHTML = "Some error occured. Please try again";
+      modalText.innerText = resjson.message;
+      // modalContainer.style.setProperty("--state-colour", "red");
+      modalButton.style.backgroundColor = "red";
+      document.getElementById("tick").style.display = "none";
+      // window.location.reload();
+    }
   }
   // window.reload();
-  let modalContainer = document.getElementById("modal-container");
-  let modalButton = document.getElementById("modal-button");
-  let modalTitle = document.getElementById("modal-title");
-  let modalText = document.getElementById("modal-text");
-  // modalContainer.style.display = "block";
+
+  // if (resjson.authorized) {
+  //   modalTitle.innerText = "Account successfully Created";
+  // } else {
+  //   modalTitle.innerText = "Some Error occured" + resjson;
+  // }
   modalButton.onclick = () => {
-    // let classes=[...modalContainer.classList]
-    // if ([...modalContainer.classList].includes("hidden")) {
-    //   modalContainer.classList.remove("hidden");
-    //   modalContainer.classList.add("block");
-    //   console.log("shown");
-    // } else {
-    //   modalContainer.classList.add("hidden");
-    //   modalContainer.classList.remove("block");
-    //   console.log("hidden");
-    // }
+    window.location.reload();
+
+    if ([...modalContainer.classList].includes("hidden")) {
+      modalContainer.classList.remove("hidden");
+      modalContainer.classList.add("block");
+      console.log("shown");
+    } else {
+      modalContainer.classList.add("hidden");
+      modalContainer.classList.remove("block");
+      console.log("hidden");
+    }
   };
 });

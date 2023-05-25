@@ -272,82 +272,91 @@
       </div>
 
       <!--MODAL SECTION  -->
+
       <div
         class="relative z-10 hidden"
+        aria-labelledby="modal-title"
         role="dialog"
         aria-modal="true"
         id="modal-container"
+        style="--state-color: green"
       >
         <div
           class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
         ></div>
 
         <div class="fixed inset-0 z-10 overflow-y-auto">
-          < class="flex min-h-full items-end justify-center p-4 text-center
-          sm:items-center sm:p-0" > < class="relative transform overflow-hidden
-          rounded-lg bg-white text-left shadow-xl transition-all"
-          style="--state-color: green" > < class="bg-white px-4 pb-4 pt-5 sm:p-6
-          sm:pb-4">
-          <div class="sm:flex sm:items-start">
+          <div
+            class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+          >
             <div
-              class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 sm:mx-0 sm:h-10 sm:w-10"
+              class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
             >
-              <svg
-                style="color: var(--state-color)"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="40"
-                zoomAndPan="magnify"
-                viewBox="0 0 30 30.000001"
-                height="40"
-                preserveAspectRatio="xMidYMid meet"
-                version="1.0"
+              <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                  <div
+                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 sm:mx-0 sm:h-10 sm:w-10"
+                  >
+                    <svg
+                      style="color: var(--state-color)"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      width="40"
+                      zoomAndPan="magnify"
+                      viewBox="0 0 30 30.000001"
+                      height="40"
+                      preserveAspectRatio="xMidYMid meet"
+                      version="1.0"
+                      id="tick"
+                    >
+                      <defs>
+                        <clipPath id="id1">
+                          <path
+                            d="M 2.328125 4.222656 L 27.734375 4.222656 L 27.734375 24.542969 L 2.328125 24.542969 Z M 2.328125 4.222656 "
+                            clip-rule="nonzero"
+                            fill="#00ff11"
+                          ></path>
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#id1)">
+                        <path
+                          fill="#00ff11"
+                          d="M 27.5 7.53125 L 24.464844 4.542969 C 24.15625 4.238281 23.65625 4.238281 23.347656 4.542969 L 11.035156 16.667969 L 6.824219 12.523438 C 6.527344 12.230469 6 12.230469 5.703125 12.523438 L 2.640625 15.539062 C 2.332031 15.84375 2.332031 16.335938 2.640625 16.640625 L 10.445312 24.324219 C 10.59375 24.472656 10.796875 24.554688 11.007812 24.554688 C 11.214844 24.554688 11.417969 24.472656 11.566406 24.324219 L 27.5 8.632812 C 27.648438 8.488281 27.734375 8.289062 27.734375 8.082031 C 27.734375 7.875 27.648438 7.679688 27.5 7.53125 Z M 27.5 7.53125 "
+                          fill-opacity="1"
+                          fill-rule="nonzero"
+                        ></path>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <h3
+                      class="text-base font-semibold leading-6 text-gray-900"
+                      id="modal-title"
+                    >
+                      Account Created
+                    </h3>
+                    <div class="mt-2">
+                      <p class="text-sm text-gray-500" id="modal-text">
+                        You can Now Login with the credentials
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
               >
-                <defs>
-                  <clipPath id="id1">
-                    <path
-                      d="M 2.328125 4.222656 L 27.734375 4.222656 L 27.734375 24.542969 L 2.328125 24.542969 Z M 2.328125 4.222656 "
-                      clip-rule="nonzero"
-                      fill="#00ff11"
-                    ></path>
-                  </clipPath>
-                </defs>
-                <g clip-path="url(#id1)">
-                  <path
-                    fill="#00ff11"
-                    d="M 27.5 7.53125 L 24.464844 4.542969 C 24.15625 4.238281 23.65625 4.238281 23.347656 4.542969 L 11.035156 16.667969 L 6.824219 12.523438 C 6.527344 12.230469 6 12.230469 5.703125 12.523438 L 2.640625 15.539062 C 2.332031 15.84375 2.332031 16.335938 2.640625 16.640625 L 10.445312 24.324219 C 10.59375 24.472656 10.796875 24.554688 11.007812 24.554688 C 11.214844 24.554688 11.417969 24.472656 11.566406 24.324219 L 27.5 8.632812 C 27.648438 8.488281 27.734375 8.289062 27.734375 8.082031 C 27.734375 7.875 27.648438 7.679688 27.5 7.53125 Z M 27.5 7.53125 "
-                    fill-opacity="1"
-                    fill-rule="nonzero"
-                  ></path>
-                </g>
-              </svg>
-            </div>
-            <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-              <h3
-                class="text-base font-semibold leading-6 text-gray-900"
-                id="modal-title"
-              >
-                Deactivate account
-              </h3>
-              <div class="mt-2">
-                <p class="text-sm text-gray-500" id="modal-text">
-                  Are you sure you want to deactivate your account? All of your
-                  data will be permanently removed. This action cannot be
-                  undone.
-                </p>
+                <button
+                  type="button"
+                  id="modal-button"
+                  class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                  style="background-color: var(--state-color)"
+                >
+                  Confirm
+                </button>
               </div>
             </div>
           </div>
-        </div>
-        <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-          <button
-            type="button"
-            class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-            id="modal-button"
-            style="background-color: var(--state-color)"
-          >
-            OK
-          </button>
         </div>
       </div>
     </section>
