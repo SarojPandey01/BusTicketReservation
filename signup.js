@@ -4,8 +4,8 @@ let emailInput = document.getElementById("email");
 let phoneInput = document.getElementById("phoneno");
 let pass1Input = document.getElementById("password1");
 let pass2Input = document.getElementById("password2");
-let API_URL = "https://kgnairbus.onrender.com";
-// let API_URL = "http://localhost:3000";
+// let API_URL = "https://kgnairbus.onrender.com";
+let API_URL = "http://localhost:3000";
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -61,6 +61,25 @@ form.addEventListener("submit", async (e) => {
       ? "SIGNUP SUCCESS"
       : "SIGNUP FAILED";
     let userInfo = resjson;
-    localStorage.setItem("kgn", JSON.stringify(userInfo));
+
+    resjson.authorized && localStorage.setItem("kgn", JSON.stringify(userInfo));
   }
+  // window.reload();
+  let modalContainer = document.getElementById("modal-container");
+  let modalButton = document.getElementById("modal-button");
+  let modalTitle = document.getElementById("modal-title");
+  let modalText = document.getElementById("modal-text");
+  // modalContainer.style.display = "block";
+  modalButton.onclick = () => {
+    // let classes=[...modalContainer.classList]
+    // if ([...modalContainer.classList].includes("hidden")) {
+    //   modalContainer.classList.remove("hidden");
+    //   modalContainer.classList.add("block");
+    //   console.log("shown");
+    // } else {
+    //   modalContainer.classList.add("hidden");
+    //   modalContainer.classList.remove("block");
+    //   console.log("hidden");
+    // }
+  };
 });
