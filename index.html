@@ -117,6 +117,7 @@
             list of operators.
           </p>
         </div>
+        <!-- select form -->
         <div
           class="lg:w-2/6 md:w-1/2 bg-gray-800 bg-opacity-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0"
         >
@@ -133,12 +134,12 @@
               class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-indigo-900 rounded border border-gray-600 focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             >
               <option class="bg-gray-800" value="Kathmandu">Kathmandu</option>
-              <option class="bg-gray-800" value="Kathmandu">Birgunj</option>
-              <option class="bg-gray-800" value="Kathmandu">Pokhara</option>
-              <option class="bg-gray-800" value="Kathmandu">Chitwan</option>
-              <option class="bg-gray-800" value="Kathmandu">Jaleswor</option>
-              <option class="bg-gray-800" value="Kathmandu">Bhairawa</option>
-              <option class="bg-gray-800" value="Kathmandu">Dang</option>
+              <option class="bg-gray-800" value="Birgunj">Birgunj</option>
+              <option class="bg-gray-800" value="Pokhara">Pokhara</option>
+              <option class="bg-gray-800" value="Chitwan">Chitwan</option>
+              <option class="bg-gray-800" value="Jaleswor">Jaleswor</option>
+              <option class="bg-gray-800" value="Bhairawa">Bhairawa</option>
+              <option class="bg-gray-800" value="Dang">Dang</option>
             </select>
           </div>
           <div class="relative mb-4">
@@ -150,14 +151,13 @@
               id="to"
               class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-indigo-900 rounded border border-gray-600 focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             >
+              <option class="bg-gray-800" value="Kathmandu">Kathmandu</option>
+              <option class="bg-gray-800" value="Birgunj">Birgunj</option>
+              <option class="bg-gray-800" value="Pokhara">Pokhara</option>
+              <option class="bg-gray-800" value="Chitwan">Chitwan</option>
+              <option class="bg-gray-800" value="Jaleswor">Jaleswor</option>
               <option class="bg-gray-800" value="Bhairawa">Bhairawa</option>
-              <option class="bg-gray-800" value="Bhairawa">Kathmandu</option>
-              <option class="bg-gray-800" value="Bhairawa">Pokhara</option>
-              <option class="bg-gray-800" value="Bhairawa">Birgunj</option>
-              <option class="bg-gray-800" value="Bhairawa">Dang</option>
-
-              <option class="bg-gray-800" value="Bhairawa">Chitwan</option>
-              <option class="bg-gray-800" value="Bhairawa">Jaleswor</option>
+              <option class="bg-gray-800" value="Dang">Dang</option>
             </select>
           </div>
           <!-- date and time picker -->
@@ -184,6 +184,7 @@
                 datepicker
                 datepicker-title="Pick Date"
                 type="text"
+                id="date"
                 class="bg-gray-50 my-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Select date"
               />
@@ -192,8 +193,9 @@
 
           <button
             class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+            id="searchButton"
           >
-            Book Now
+            Find Your Bus
           </button>
           <p class="text-xs mt-3"></p>
         </div>
