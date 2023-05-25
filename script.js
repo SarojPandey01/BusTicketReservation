@@ -18,7 +18,7 @@ searchButton.onclick = (e) => {
     validated = true;
   }
   if (validated) {
-    window.location.href = `/busSearch.html?from=${from}&to=${to}&date=${dateStr}?`;
+    window.location.href = `/busSearch.html?from=${from}&to=${to}&date=${dateStr}`;
   }
 };
 

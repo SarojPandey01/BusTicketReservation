@@ -109,33 +109,36 @@
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
         >
           <tr>
+            <th scope="col" class="px-6 py-3">Bus Number</th>
             <th scope="col" class="px-6 py-3">Bus Name</th>
-            <th scope="col" class="px-6 py-3">Bus No.</th>
             <th scope="col" class="px-6 py-3">Source</th>
             <th scope="col" class="px-6 py-3">Destination</th>
             <th scope="col" class="px-6 py-3">Date</th>
+            <th scope="col" class="px-6 py-3">Price</th>
             <!-- <th scope="col" class="px-6 py-3">
               <span class="sr-only">Edit</span>
             </th> -->
           </tr>
         </thead>
-        <tbody>
-          <tr
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+        <tbody id="table-body">
+          <!-- TO BE INSERTED WITH JAVASCRIPT -->
+          <!-- <tr
+            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-600"
           >
             <th
-              scope="row"
               class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
-              Bus 1
+              na 3s kha 9079
             </th>
-            <td class="px-6 py-4">6745</td>
+            <td class="px-6 py-4">nepal travels</td>
             <td class="px-6 py-4">Kathmandu</td>
-            <td class="px-6 py-4">Mustang</td>
-            <td class="px-6 py-4">2023 02 05</td>
-          </tr>
+            <td class="px-6 py-4">Pokhara</td>
+            <td class="px-6 py-4">2023 06 05</td>
+            <td class="px-6 py-4">10000</td>
+          </tr> -->
         </tbody>
       </table>
+      <h2 id="info" style="text-align: center"></h2>
     </div>
 
     <script
@@ -232,6 +235,7 @@
         </span>
       </div>
     </footer>
+    <script src="global.js"></script>
     <script src="./busSearch.js"></script>
   </body>
 </html>
