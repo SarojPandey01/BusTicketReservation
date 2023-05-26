@@ -1,20 +1,7 @@
-const urlParams = new URLSearchParams(window.location.search);
-const source = urlParams.get("from");
-const destination = urlParams.get("to");
-const date = urlParams.get("date").split("/").join(" ");
-let data = { source, destination, date };
-
 window.addEventListener("load", fetchBusData);
 function fetchBusData() {
   console.log(API_URL);
-  fetch(`${API_URL}/search`, {
-    method: "POST",
-    body: JSON.stringify(data),
-    cors: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  fetch(`${API_URL}/getAllBuses`)
     .then((r) => r.json())
     .then((r) => {
       console.log(r);
@@ -34,9 +21,7 @@ function appendBuses(data) {
   } else {
     for (bus of buses) {
       let tr = document.createElement("tr");
-      // tr.innerText = "supp";
       tr.dataset.reservedSeats = bus.reservedSeats;
-
       tr.className +=
         " bg-white border-b dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-600";
       tr.onclick = handleBusInfoClick;
