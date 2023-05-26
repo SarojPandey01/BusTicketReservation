@@ -45,7 +45,7 @@ form.addEventListener("submit", async (e) => {
     console.log(data);
     let signupBtn = document.getElementById("sign-up-btn");
     signupBtn.disabled = true;
-    signupBtn.style.clicke;
+
     signupBtn.style.background = "gray";
     signupBtn.innerText = "Signing Up...";
     let res = await fetch(`${API_URL}/signup`, {
