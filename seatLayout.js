@@ -69,7 +69,7 @@ function handleBookReservation(reservedSeats, userdata) {
   const date = urlParams.get("date").split("/").join(" ");
   seatsInString = reservedSeats.join(" ");
   let bodyData = {
-    userid: userdata.uid,
+    userid: userdata.userid,
     name: userdata.Name,
     source,
     destination,
@@ -96,7 +96,7 @@ function handleBookReservation(reservedSeats, userdata) {
       let modalText = document.getElementById("modal-text");
       modalContainer.classList.remove("hidden");
       modalContainer.classList.add("block");
-
+      console.log(r);
       if (r.success) {
         modalTitle.innerHTML =
           "Hello " +
@@ -112,12 +112,13 @@ function handleBookReservation(reservedSeats, userdata) {
         // modalContainer.style.setProperty("--state-colour", "red");
         modalButton.style.backgroundColor = "red";
         document.getElementById("tick").style.display = "none";
-        window.location.href = "/";
+        // window.location.href = "/";
       }
     });
   let modalButton = document.getElementById("modal-button");
 
   modalButton.onclick = () => {
+    // window.location.href = "/";
     window.location.reload();
 
     if ([...modalContainer.classList].includes("hidden")) {
