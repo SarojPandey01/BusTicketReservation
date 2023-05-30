@@ -1,7 +1,6 @@
-// let API_URL = "https://kgnairbus.onrender.com";
-let API_URL = "http://localhost:3000";
+let API_URL = "https://kgnairbus.onrender.com";
+// let API_URL = "http://localhost:3000";
 let ISAUTHORIZED = JSON.parse(localStorage?.getItem("kgn"))?.authorized;
-console.log(ISAUTHORIZED);
 if (ISAUTHORIZED) {
   let btnContainer = document.getElementById("loginButtonContainer");
   let anchor = btnContainer.children[0];

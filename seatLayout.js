@@ -66,11 +66,12 @@ function handleBookReservation(reservedSeats, userdata) {
   const busid = urlParams.get("busid");
   const source = urlParams.get("source");
   const destination = urlParams.get("destination");
+  const busName = urlParams.get("busname");
   const date = urlParams.get("date").split("/").join(" ");
   seatsInString = reservedSeats.join(" ");
   let bodyData = {
     userid: userdata.userid,
-    name: userdata.Name,
+    name: busName,
     source,
     destination,
     date,
