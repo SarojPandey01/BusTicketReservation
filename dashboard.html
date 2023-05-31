@@ -103,9 +103,9 @@
 
     <!-- dashboard -->
 
-    <div class="flex items-center justify-center min-h-screen bg-gray-100">
-      <div class="w-3/5 bg-white shadow-lg">
-        <div class="flex justify-between p-4">
+    <div class="flex items-center justify-center " id="mainReservationContainer" >
+      <div class="w-3/5 bg-white shadow-lg min-h-screen wrap bg-gray-100 max-[600px]:w-screen " >
+        <div class="flex justify-between flex-wrap  p-4">
           <div>
             <h1
               class="text-3xl italic font-extrabold tracking-widest text-indigo-500"
@@ -117,8 +117,8 @@
               as confirmation.
             </p>
           </div>
-          <div class="p-2">
-            <ul class="flex">
+          <div class="p-2 flex flex-wrap">
+            <ul class="flex flex-wrap">
               <li
                 class="flex flex-col items-center p-2 border-l-2 border-indigo-200"
               >
@@ -137,7 +137,7 @@
                   />
                 </svg>
                 <span class="text-sm"> https://kgnairbus.onrender.com/ </span>
-                <span class="text-sm">
+                <span class="text-sm max-[600px]:text-[12px]">
                   https://sarojpandey01.github.io/BusTicketReservation/
                 </span>
               </li>
@@ -202,23 +202,23 @@
         </h1>
         <div id="reservationListContainer" class="flex flex-wrap"></div>
 
-        <div class="p-4">
+        <div class="p-4 ">
           <div class="flex items-center justify-center">
             Thank you very much for doing business with us.
           </div>
           <div class="flex items-end justify-end space-x-3">
-            <button class="px-4 py-2 text-sm text-green-600 bg-green-100">
+            <button class="px-4 py-2 text-sm text-green-600 bg-green-100" onclick="downloadPDF()">
               Print
             </button>
-            <button class="px-4 py-2 text-sm text-blue-600 bg-blue-100">
+            <!-- <button class="px-4 py-2 text-sm text-blue-600 bg-blue-100">
               Save
             </button>
             <button class="px-4 py-2 text-sm text-red-600 bg-red-100">
               Cancel
-            </button>
+            </button> -->
             <button
               type="button"
-              class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              class="px-4 py-2 text-sm text-white bg-red-500"
              id="logoutButton"
             >
               LOGOUT
@@ -319,22 +319,22 @@
       </div>
     </footer>
     <script src="global.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       let datenow = document.getElementById("datenow");
       let random = document.getElementById("random");
       let name = document.getElementById("name");
       let name1 = document.getElementById("name1");
-      random.innerHTML = parseInt(Math.random * 10000 + 8997).toString()
-
+      
       const urlParams = new URLSearchParams(window.location.search);
-      let uiud = urlParams.get("userid");
+      let uuid = urlParams.get("userid");
       let username = urlParams.get("name");
       name.innerText = username;
       name1.innerText = username;
+      random.innerHTML = uuid
 
       //reservations
-      let data = { userid: uiud };
+      let data = { userid: uuid };
       let res = fetch(`${API_URL}/getUserReservations`, {
         method: "POST",
         body: JSON.stringify(data),
@@ -352,15 +352,16 @@
           });
         });
       let container = document.getElementById("reservationListContainer");
+
       function addReservationList(reservation) {
         let elem = `
-           <a
+           <a 
 
           href="#"
-          class="block max-w-sm m-8 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          class="block min-w-60 m-8 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 max-[600px]:w-screen max-[600px]:w-screen max-[600px]:mx-0 "
         >
           <h5
-            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            class="mb-2 min-w-56 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
           >
             ${reservation.name}
           </h5>
@@ -421,13 +422,31 @@
         div.innerHTML = elem;
       }
 document.querySelector('#logoutButton').addEventListener('click',(e)=>{
-      // function handleLogout(e){
        localStorage.setItem('kgn',JSON.stringify({authorized:false}))
        window.location.reload()
        window.location='/'
+      })
+   
 
-    //  }
-});
+    //for downloading ticket as pdf
+function downloadPDF(){
+  var node = document.getElementById('mainReservationContainer');
+domtoimage.toPng(node)
+    .then(function (dataUrl) {
+        var img = new Image();
+        img.src = dataUrl;
+        var link = document.createElement('a');
+        link.download = 'ticket.jpeg';
+        link.href = dataUrl;
+        link.click();
+    }
+        // document.body.appendChild(img);
+    )    .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+    });
+
+
+}
   </script>
     </script>
   </body>
