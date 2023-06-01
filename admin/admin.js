@@ -1,11 +1,11 @@
-// const ADMIN_PASS = 123;
-// let input = prompt("Enter Admin password");
-// if (parseInt(input) == ADMIN_PASS) {
-//   console.log("cool");
-// } else {
-//   window.location.href = "/";
-//   console.log("nodt cool");
-// }
+const ADMIN_PASS = 123;
+let input = prompt("Enter Admin password");
+if (parseInt(input) == ADMIN_PASS) {
+  console.log("cool");
+} else {
+  window.location.href = "/";
+  console.log("not cool");
+}
 window.addEventListener("load", fetchBusData);
 function fetchBusData() {
   console.log(API_URL);

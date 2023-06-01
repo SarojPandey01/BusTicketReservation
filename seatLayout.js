@@ -8,8 +8,6 @@ const unavailableSeats = urlParams.get("reservedSeats").split(",");
 let total = document.querySelector("#total");
 document.getElementById("nameofbus").innerText = `( ` + busName + " )";
 for (occupied of unavailableSeats) {
-  console.log(occupied);
-
   document
     .getElementById(occupied)
     ?.parentElement.children[1].classList.remove("available");
@@ -60,6 +58,7 @@ function handleClick(e) {
       : alert("Please login to continue");
   };
 }
+let modalContainer = document.getElementById("modal-container");
 
 function handleBookReservation(reservedSeats, userdata) {
   const urlParams = new URLSearchParams(window.location.search);
@@ -91,7 +90,6 @@ function handleBookReservation(reservedSeats, userdata) {
     .then((r) => r.json())
     .then((r) => {
       console.log(r);
-      let modalContainer = document.getElementById("modal-container");
       let modalButton = document.getElementById("modal-button");
       let modalTitle = document.getElementById("modal-title");
       let modalText = document.getElementById("modal-text");
@@ -107,20 +105,24 @@ function handleBookReservation(reservedSeats, userdata) {
         modalText.innerText =
           "    Booking will be cancelled if payment is not completed sooner";
         modalContainer.style.setProperty("--state-colour", "green");
+        modalContainer.dataset.success = "true";
       } else {
         modalTitle.innerHTML = "Some error occured. Please try again";
         modalText.innerText = userdata.message;
         // modalContainer.style.setProperty("--state-colour", "red");
         modalButton.style.backgroundColor = "red";
         document.getElementById("tick").style.display = "none";
+        modalContainer.dataset.success = "false";
+
         // window.location.href = "/";
       }
     });
   let modalButton = document.getElementById("modal-button");
 
   modalButton.onclick = () => {
-    // window.location.href = "/";
-    window.location.reload();
+    modalContainer.dataset.success === "true"
+      ? (window.location.href = "/buses.html")
+      : window.location.reload();
 
     if ([...modalContainer.classList].includes("hidden")) {
       modalContainer.classList.remove("hidden");

@@ -110,47 +110,44 @@
         </nav>
 
         <!-- ADMIN SECTION------ -->
-        <h1>HELLO ADMIN</h1>
-        <div class="relative overflow-x-auto my-3 p-6 p-6 min-h-screen">
-          <table
-            class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        <div class="heading">
+          <h1
+            class="text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-black-900 md:text-5xl lg:text-6xl dark:text-gray-900"
           >
-            <thead
-              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-            >
-              <tr>
-                <th scope="col" class="px-6 py-3">Bus Number</th>
-                <th scope="col" class="px-6 py-3">Bus Name</th>
-                <th scope="col" class="px-6 py-3">Source</th>
-                <th scope="col" class="px-6 py-3">Destination</th>
-                <th scope="col" class="px-6 py-3">Date</th>
-                <th scope="col" class="px-6 py-3">Price</th>
-                <th scope="col" class="px-6 py-3">Time</th>
-                <!-- <th scope="col" class="px-6 py-3">
-              <span class="sr-only">Edit</span>
-            </th> -->
-              </tr>
-            </thead>
-            <tbody id="table-body">
-              <!-- TO BE INSERTED WITH JAVASCRIPT -->
-              <!-- <tr
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-600"
+            Messages
+          </h1>
+          <p
+            class="text-center mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400"
           >
-            <th
-              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-whiate"
+            cool right?
+          </p>
+        </div>
+
+        <section id="messagesContainer">
+          <!-- to be inserted by javascript -->
+        </section>
+        <div class="bg-white p-4 flex justify-center">
+          <button
+            id="delBtn"
+            class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              na 3s kha 9079
-            </th>
-            <td class="px-6 py-4">nepal travels</td>
-            <td class="px-6 py-4">Kathmandu</td>
-            <td class="px-6 py-4">Pokhara</td>
-            <td class="px-6 py-4">2023 06 05</td>
-            <td class="px-6 py-4">10000</td>
-            <td class="px-6 py-4">00 00</td>
-          </tr> -->
-            </tbody>
-          </table>
-          <h2 id="info" style="text-align: center"></h2>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+              />
+            </svg>
+
+            DELETE ALL MESSAGES
+          </button>
         </div>
 
         <!-- FOOTER -->
@@ -243,8 +240,8 @@
             </span>
           </div>
         </footer>
-        <script src="admin.js"></script>
         <script src="../global.js"></script>
+        <script src="feedbacks.js"></script>
       </body>
     </html>
   </body>
