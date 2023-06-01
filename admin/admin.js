@@ -72,21 +72,26 @@ async function handleBusInfoClick(e) {
     .trim()
     .split(" ")
     .join(",");
-  let userid = tableRow.dataset.userid;
-  console.log("hii");
-  let busno = tableRow.children[0].innerText;
+  let userid = tableRow.children[1].innerText;
+  let busid = tableRow.children[0].innerText;
   //   let busName = tableRow.children[1].innerText;
   //   let source = tableRow.children[2].innerText;
   //   let destination = tableRow.children[3].innerText;
   //   let date = tableRow.children[4].innerText.split(" ").join("/");
   //   let price = tableRow.children[5].innerText;
   //   let time = tableRow.children[6].innerText;
-  const payload = { userid, busid: busno };
+
+  const data = {
+    userid,
+    busid,
+  };
+
   let res = await fetch(`${API_URL}/deleteReservation`, {
     method: "POST",
-    body: JSON.stringify(payload),
+    body: JSON.stringify(data),
+    cors: "no-cors",
     headers: {
-      Accept: "Application/json",
+      "Content-Type": "application/json",
     },
   });
   let resjson = await res.json();

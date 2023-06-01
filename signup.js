@@ -77,13 +77,22 @@ form.addEventListener("submit", async (e) => {
       modalText.innerText =
         "     You can now login with credentials. Thank you for joining our community. We look forward to providing you with a great user experience!";
       modalContainer.style.setProperty("--state-colour", "green");
+      modalContainer.dataset.isAuthorized = true;
+      console.log(
+        "🤔 > form.addEventListener > modalContainer.dataset:",
+        modalContainer.dataset
+      );
     } else {
       modalTitle.innerHTML = "Some error occured. Please try again";
       modalText.innerText = resjson.message;
       // modalContainer.style.setProperty("--state-colour", "red");
       modalButton.style.backgroundColor = "red";
       document.getElementById("tick").style.display = "none";
-      // window.location.reload();
+      modalContainer.dataset.isAuthorized = false;
+      console.log(
+        "🤔 > form.addEventListener > modalContainer.dataset:",
+        modalContainer.dataset
+      );
     }
   }
   // window.reload();
@@ -94,8 +103,11 @@ form.addEventListener("submit", async (e) => {
   //   modalTitle.innerText = "Some Error occured" + resjson;
   // }
   modalButton.onclick = () => {
-    window.location.href = "/";
-
+    if (modalContainer.dataset.isAuthorized === "true") {
+      window.location.href = "/";
+    } else {
+      window.location.reload();
+    }
     if ([...modalContainer.classList].includes("hidden")) {
       modalContainer.classList.remove("hidden");
       modalContainer.classList.add("block");
