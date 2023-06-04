@@ -63,9 +63,8 @@ addbusbtn.addEventListener("click", async () => {
   }
 });
 deletebusbtn.onclick = async () => {
-  let message = await versions.confirm();
-  let response = message === "delete";
-  if (response) {
+  let message = confirm("Sure to delete all buses?");
+  if (message) {
     fetch(`${API_URL}/deleteAllBuses`)
       .then((r) => r.json())
       .then((r) => {
