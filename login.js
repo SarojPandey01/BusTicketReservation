@@ -31,7 +31,7 @@ formInput.addEventListener("submit", async (e) => {
   if (resjson.authorized) {
     console.log(resjson);
     localStorage.setItem("kgn", JSON.stringify(resjson));
-    window.location.href = `/dashboard.html?userid=${resjson.userid}&name=${resjson.Name}`;
+    window.location.href = `./dashboard.html?userid=${resjson.userid}&name=${resjson.Name}`;
     // window.location.href =
     //   "/dashboard.html?userid=" + resjson.userid + "?name=" + resjson.Name;
   } else {
