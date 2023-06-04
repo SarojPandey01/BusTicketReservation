@@ -75,6 +75,9 @@ function handleBookReservation(reservedSeats, userdata) {
   seatsInString = reservedSeats.join(" ");
   let bodyData = {
     userid: userdata.userid,
+    username: userdata.Name,
+    phone: userdata.phone,
+    email: userdata.Email,
     name: busName,
     source,
     destination,
@@ -108,7 +111,10 @@ function handleBookReservation(reservedSeats, userdata) {
           "👋, <br/>" +
           "Bus has been successfully booked  ";
         modalText.innerText =
-          "    Booking will be cancelled if payment is not completed sooner";
+          "    Booking will be cancelled if payment is not completed sooner. Please be present at the ticket counter before one hour  on " +
+          date +
+          ":" +
+          time;
         modalContainer.style.setProperty("--state-colour", "green");
         modalContainer.dataset.success = "true";
       } else {

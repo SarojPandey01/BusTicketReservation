@@ -25,7 +25,23 @@ function appendBuses(data) {
       tr.className +=
         " bg-white border-b dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-600";
       tr.onclick = handleBusInfoClick;
-      tableBody.appendChild(tr);
+      // console.log(bus.date);
+      let dateArr = bus.date.split(" ");
+      // console.log(dateArr);
+      let year = dateArr[0];
+      let month = dateArr[1];
+      let day = dateArr[2];
+      let timeArr = bus.time.split(" ");
+      let hour = timeArr[0];
+      let minute = timeArr[1];
+      // console.log(year, month, day, hour, minute);
+      let date1 = new Date(year, month - 1, day, hour, minute);
+
+      let diff = new Date().getTime() - date1.getTime();
+      if (diff < 0) {
+        tableBody.appendChild(tr);
+      }
+
       let th = document.createElement("th");
       th.className +=
         " px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white";
