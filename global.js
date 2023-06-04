@@ -1,5 +1,5 @@
-// let API_URL = "https://kgnairbus.onrender.com";
-let API_URL = "http://localhost:3000";
+let API_URL = "https://kgnairbus.onrender.com";
+// let API_URL = "http://localhost:3000";
 let ISAUTHORIZED = JSON.parse(localStorage?.getItem("kgn"))?.authorized;
 if (ISAUTHORIZED) {
   let btnContainer = document.getElementById("loginButtonContainer");
@@ -15,7 +15,8 @@ let hamBurgerBtn =
 
 hamBurgerBtn.addEventListener("click", toggleMenu);
 function toggleMenu() {
-  console.log("first");
+  // console.log("first");
+
   const menu = document.querySelector("#navbar-cta");
   const isShown = !menu.classList.contains("hidden");
   console.log({ menu, isShown });
