@@ -1,15 +1,14 @@
 const ADMIN_PASS = 123;
 let input = prompt("Enter Admin password");
+let isAdmin = false;
 if (parseInt(input) == ADMIN_PASS) {
   console.log("cool");
+  isAdmin = true;
 } else {
   window.location.href = "/";
-  console.log("not cool");
 }
 document.body.style.pointerEvents = "none";
-let adminPass = 123;
-let r = prompt("Enter the admin password");
-if (adminPass == r) {
+if (isAdmin) {
   document.body.style.pointerEvents = "all";
 
   function fetchBusData() {
