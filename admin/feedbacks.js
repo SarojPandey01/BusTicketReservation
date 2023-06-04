@@ -31,7 +31,7 @@ fetchMessages().then((messages) => {
               <div class="hidden sm:block sm:shrink-0">
                 <img
                   alt="image"
-                  src="https://xsgames.co/randomusers/avatar.php?g=pixel "
+                  src="https://xsgames.co/randomusers/avatar.php?g=pixel"
                   class="h-16 w-16 rounded-lg object-cover shadow-sm"
                 />
               </div>
