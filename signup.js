@@ -4,7 +4,7 @@ let emailInput = document.getElementById("email");
 let phoneInput = document.getElementById("phoneno");
 let pass1Input = document.getElementById("password1");
 let pass2Input = document.getElementById("password2");
-// let API_URL = "https://kgnairbus.onrender.com";
+let API_URL = "https://kgnairbus.onrender.com";
 // let API_URL = "http://localhost:3000";
 
 let modalContainer = document.getElementById("modal-container");
